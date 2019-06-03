@@ -1,0 +1,58 @@
+#include "MainIncludes.h"
+
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+#include "App.h"
+#include "ManagersController.h"
+
+#include "ui/LogsImpl.h"
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+
+    initUI();
+    initManagers();
+
+    // create graph and assign data to it:
+    ui->widgetPlot->addGraph();
+    ui->widgetPlot->graph(0)->setData(x, y);
+    ui->widgetPlot->graph(0)->setLineStyle(QCPGraph::lsNone);
+    ui->widgetPlot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 8));
+    // give the axes some labels:
+    ui->widgetPlot->xAxis->setLabel("x");
+    ui->widgetPlot->yAxis->setLabel("y");
+    // set axes ranges, so we see all data:
+    ui->widgetPlot->xAxis->setRange(0, 100);
+    ui->widgetPlot->yAxis->setRange(0, 100);
+    ui->widgetPlot->replot();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+    delete m_logs;
+}
+
+void MainWindow::initUI()
+{
+    // Logs
+    m_logs = new LogsImpl();
+    m_logs->assignUI( this );
+}
+
+void MainWindow::initManagers()
+{
+    // Logs
+    const LogManagerPtr& logMng = App::getMC()->getLogManager();
+
+    logMng->setLogCallback(
+       [this]( const std::string& str )
+    {
+        if( m_logs )
+            m_logs->addLog( QString( str.c_str() ) );
+    } );
+}

@@ -1,1 +1,1 @@
-# Code with Qt Creator
+# Created with Qt Creator

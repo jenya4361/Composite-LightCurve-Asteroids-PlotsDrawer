@@ -1,6 +1,5 @@
 <center>
-<img src="Resources/PlotsDrawerIcon00.png" width="48">
+<img src="Resources/PlotsDrawerIcon00.png" width="70">
 </center>
 
-
-# Created with Qt Creator
+# Easy plotting composite light curves.

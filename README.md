@@ -9,4 +9,4 @@
 * **A narrowly focused programm**. Plots Drawer can only be applied in astronomy.
 
 # Project structure.
-<img src="Resources/ProjectStructure000.png" width="500">
+<img src="Resources/Untitled Diagram (1).png" width="780">

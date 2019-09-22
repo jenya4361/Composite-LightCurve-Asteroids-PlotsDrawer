@@ -19,4 +19,4 @@
 * **Plots** - A list of added plots is displayed here. Click on the added plot in the list to interact with it.
 * **Log** - If in any of the steps you made a mistake, then Log will let you know about it. The log file throughout the session is located in the root of the program called log.txt.
 
-<img src="Resources/PD000.png" width="780">
+<img src="Resources/PD000.png" width="950">
